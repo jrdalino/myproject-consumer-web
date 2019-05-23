@@ -3,11 +3,22 @@
 The folder structure will look like this:
 ```
 ~/environment/myproject-consumer-web
-├── app.py
-├── custom_logger.py
-├── product_routes.py
-├── products.json
-
+├── build/
+├── config/
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src
+    ├── App.vue
+    ├── assets/
+        └── logo.png
+    ├── components/
+    ├── main.js
+    └── router/
+        └── index.js    
+├── static
+├── test
 ├── README.md
 └── .gitignore
 ```
