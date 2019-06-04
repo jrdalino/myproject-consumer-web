@@ -68,7 +68,7 @@ $ vue --version
 $ cd ~/environment/
 $ vue init webpack myproject-consumer-web
 $ cd myproject-consumer-web
-$ npm run serve
+$ npm run dev
 ```
 
 ### Step 1.2: Create a CodeCommit Repository
@@ -77,7 +77,7 @@ $ aws codecommit create-repository --repository-name myproject-consumer-web
 ```
 
 ### Step 1.3: Set up .gitignore
-- Automatically created by vue init
+- To follow
 
 ### Step 1.4: Import Existing Project Folder to CodeCommit Repo
 ```bash
@@ -92,7 +92,7 @@ $ git push origin master
 
 ## Step 2: Setup Web Template (Bootstrap 4 - Directory Template)
 
-### Step 2.1:  Install theme dependencies and node modules
+### Step 2.1: Install theme dependencies and node modules
 Install dependencies:
 In `myproject-consumer-web` add the following dependencies into `package.json`
 
@@ -104,11 +104,13 @@ In `myproject-consumer-web` add the following dependencies into `package.json`
     "popper.js": "^1.15.0",
   },
 ```
+
 Install module: vue-awesome-swiper
 In the terminal run the following: 
 ```
 $ npm install vue-awesome-swiper --save
 ```
+
 after, run:
 ```
 $ npm install
@@ -185,7 +187,6 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
-
 ```
 
 ### Step 2.3: Import CSS dependencies to `App.vue`
@@ -197,11 +198,9 @@ Add the following stylesheet imports inside the `<style>` tag of `App.vue`
  @import "https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700";
  @import "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css";
  @import "https://use.fontawesome.com/releases/v5.8.1/css/all.css";
-
 ```
 
 Final version of `App.vue`:
-
 ```html
 <template>
   <div id="app">
@@ -230,7 +229,6 @@ export default {
   @import "https://use.fontawesome.com/releases/v5.8.1/css/all.css";
 
 </style>
-
 ```
 
 ## Step 3: Set up Router Plugin
@@ -239,11 +237,10 @@ export default {
 ```bash
 $ vue add router
 ```
-Output:
 
+Output:
 ```bash
-? Use history mode for router? (Requires proper server setup for index fa
-llback in production) Yes
+? Use history mode for router? (Requires proper server setup for index fallback in production) Yes
 
 🚀  Invoking generator for core:router...
 📦  Installing additional dependencies...
@@ -270,8 +267,8 @@ found 0 vulnerabilities
      src/views/Home.vue
 
    You should review these changes with git diff and commit them.
-
 ```
+
 ## Step 4: Set up Global Navbar and Footer
 
 ### Step 4.1: Set up Global Navigation Bar Component
@@ -457,8 +454,7 @@ Add the following code into the `<template>` tag of `App.vue`
 ...
 ```
 
-In the `<script>` tag of `App.vue` add the following code: 
-
+In the `<script>` tag of `App.vue` add the following code:
 ```js
 import Navigation from '@/components/Navigation.vue' <--- We import the footer from our components
 
@@ -568,8 +564,8 @@ Add the following code into the `<template>` tag of `App.vue`
 <Footer/>
 ...
 ```
-In the `<script>` tag of `App.vue` add the following code: 
 
+In the `<script>` tag of `App.vue` add the following code: 
 ```js
 import Footer from '@/components/Footer.vue' <--- We import the footer from our components
 
@@ -698,7 +694,6 @@ Add the following code:
 
 </style>
 
-
 <script>
   export default {
     data() {
@@ -717,6 +712,7 @@ Add the following code:
   }
 </script>
 ```
+
 ### Step 5.2: Set up AboutProduct Component
 In `myproject-consumer-web/src/components/`
 create a file called : `AboutProduct.vue`
@@ -2562,7 +2558,6 @@ export default new Router({
 })
 ```
 
-
 ## Step 10: Set up Axios to Consume Data 
 
 ### Step 10.1: Install Axios
@@ -2596,4 +2591,3 @@ Vue.prototype.$http = axios;
 $ aws codecommit delete-repository --repository-name myproject-vuejs-web
 $ rm -rf ~/environment/myproject-vuejs-web
 ```
-
