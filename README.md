@@ -1,42 +1,21 @@
 # My Project Consumer Web
 
-The folder structure will look like this:
-```
-~/environment/myproject-consumer-web
-├── build/
-├── config/
-├── index.html
-├── node_modules
-├── package-lock.json
-├── package.json
-├── src
-    ├── App.vue
-    ├── assets/
-        └── logo.png
-    ├── components/
-    ├── main.js
-    └── router/
-        └── index.js    
-├── static
-├── test
-├── README.md
-└── .gitignore
-```
-
 ## Prerequsites
 - Git
 ```
 $ git --version
-$ git config --global user.name "REPLACE_ME_WITH_YOUR_NAME"
-$ git config --global user.email REPLACE_ME_WITH_YOUR_EMAIL@example.com
-$ git config --global credential.helper '!aws codecommit credential-helper $@'
-$ git config --global credential.UseHttpPath true
+git version 2.14.3 (Apple Git-98)
 ```
-
 - npm
 ```
 $ npm -v
 6.7.0
+```
+
+- node
+```
+$ node -v
+v12.2.0
 ```
 
 - vue-cli
@@ -46,7 +25,7 @@ $ vue --version
 3.7.0
 ```
 
-## Step 1: Create Frontend using VueJS, HTML, CSS and Bootstrap 4 
+## Step 1: Create Frontend using VueJS, HTML, CSS and Bootstrap 4 - Directory Template
 - Provides basic CRUD functionality for products
 - The Service will be triggered by consumers via a web app
 ```
@@ -66,9 +45,8 @@ $ vue --version
 ### Step 1.1: Initialize Vue Project
 ```
 $ cd ~/environment/
-$ vue init webpack myproject-consumer-web
+$ vue create myproject-consumer-web
 $ cd myproject-consumer-web
-$ npm run dev
 ```
 
 ### Step 1.2: Create a CodeCommit Repository
@@ -77,7 +55,7 @@ $ aws codecommit create-repository --repository-name myproject-consumer-web
 ```
 
 ### Step 1.3: Set up .gitignore
-- To follow
+- Automatically created by vue create
 
 ### Step 1.4: Import Existing Project Folder to CodeCommit Repo
 ```bash
@@ -90,9 +68,21 @@ $ git remote -v
 $ git push origin master
 ```
 
+### Step 1.5: Test Vue Application Locally
+```
+$ cd ~/environment/myproject-consumer-web
+$ npm run serve
+```
+
 ## Step 2: Setup Web Template (Bootstrap 4 - Directory Template)
 
-### Step 2.1: Install theme dependencies and node modules
+### Step 2.1 Copy the contents of assets folder into assets folder of `myproject-consumer-web`
+```bash
+$ cd myproject-consumer-web/scr/assets
+$ cp -R <source_dir>/assets/ myproject-consumer-web/src/assets
+```
+
+### Step 2.2:  Install theme dependencies and node modules
 Install dependencies:
 In `myproject-consumer-web` add the following dependencies into `package.json`
 
@@ -104,13 +94,11 @@ In `myproject-consumer-web` add the following dependencies into `package.json`
     "popper.js": "^1.15.0",
   },
 ```
-
 Install module: vue-awesome-swiper
 In the terminal run the following: 
 ```
 $ npm install vue-awesome-swiper --save
 ```
-
 after, run:
 ```
 $ npm install
@@ -187,6 +175,7 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
 ```
 
 ### Step 2.3: Import CSS dependencies to `App.vue`
@@ -198,9 +187,11 @@ Add the following stylesheet imports inside the `<style>` tag of `App.vue`
  @import "https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700";
  @import "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css";
  @import "https://use.fontawesome.com/releases/v5.8.1/css/all.css";
+
 ```
 
 Final version of `App.vue`:
+
 ```html
 <template>
   <div id="app">
@@ -229,6 +220,7 @@ export default {
   @import "https://use.fontawesome.com/releases/v5.8.1/css/all.css";
 
 </style>
+
 ```
 
 ## Step 3: Set up Router Plugin
@@ -237,10 +229,11 @@ export default {
 ```bash
 $ vue add router
 ```
-
 Output:
+
 ```bash
-? Use history mode for router? (Requires proper server setup for index fallback in production) Yes
+? Use history mode for router? (Requires proper server setup for index fa
+llback in production) Yes
 
 🚀  Invoking generator for core:router...
 📦  Installing additional dependencies...
@@ -267,8 +260,8 @@ found 0 vulnerabilities
      src/views/Home.vue
 
    You should review these changes with git diff and commit them.
-```
 
+```
 ## Step 4: Set up Global Navbar and Footer
 
 ### Step 4.1: Set up Global Navigation Bar Component
@@ -449,19 +442,21 @@ Add the following code in `Navigation.vue`:
 Add the following code into the `<template>` tag of `App.vue`
 ```html
 ...
+<div id="app">
 <Navigation/>
 <router-view/>
 ...
 ```
 
-In the `<script>` tag of `App.vue` add the following code:
+In the `<script>` tag of `App.vue` add the following code: 
+
 ```js
-import Navigation from '@/components/Navigation.vue' <--- We import the footer from our components
+import Navigation from '@/components/Navigation.vue' <--- We import the Navigation from our components
 
 export default {
   name: 'home',
   components: {
-    Navigation <--- We add footer as a component
+    Navigation <--- We add Navigation as a component
   }
 }
 ```
@@ -564,8 +559,8 @@ Add the following code into the `<template>` tag of `App.vue`
 <Footer/>
 ...
 ```
-
 In the `<script>` tag of `App.vue` add the following code: 
+
 ```js
 import Footer from '@/components/Footer.vue' <--- We import the footer from our components
 
@@ -694,6 +689,7 @@ Add the following code:
 
 </style>
 
+
 <script>
   export default {
     data() {
@@ -712,7 +708,6 @@ Add the following code:
   }
 </script>
 ```
-
 ### Step 5.2: Set up AboutProduct Component
 In `myproject-consumer-web/src/components/`
 create a file called : `AboutProduct.vue`
@@ -2557,6 +2552,7 @@ export default new Router({
   ]
 })
 ```
+
 
 ## Step 10: Set up Axios to Consume Data 
 
