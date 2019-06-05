@@ -78,8 +78,13 @@ $ npm run serve
 
 ### Step 2.1 Copy the contents of assets folder into assets folder of `myproject-consumer-web`
 ```bash
-$ cd myproject-consumer-web/scr/assets
-$ cp -R <source_dir>/assets/ myproject-consumer-web/src/assets
+$ cd ~/environment/myproject-consumer-web/src/assets
+$ cp -R ~/environment/directory-listing-boostrap4-theme/pages/css ~/environment/myproject-consumer-web/src/assets
+$ cp -R ~/environment/directory-listing-boostrap4-theme/pages/docs ~/environment/myproject-consumer-web/src/assets
+$ cp -R ~/environment/directory-listing-boostrap4-theme/pages/icons ~/environment/myproject-consumer-web/src/assets
+$ cp -R ~/environment/directory-listing-boostrap4-theme/pages/img ~/environment/myproject-consumer-web/src/assets
+$ cp -R ~/environment/directory-listing-boostrap4-theme/pages/js ~/environment/myproject-consumer-web/src/assets
+$ cp -R ~/environment/directory-listing-boostrap4-theme/pages/vendor ~/environment/myproject-consumer-web/src/assets
 ```
 
 ### Step 2.2:  Install theme dependencies and node modules
@@ -91,7 +96,7 @@ In `myproject-consumer-web` add the following dependencies into `package.json`
     "bootstrap": "^4.3.1",
     "bootstrap-select": "^1.13.5",
     "jquery": "^3.3.1",
-    "popper.js": "^1.15.0",
+    "popper.js": "^1.15.0"
   },
 ```
 Install module: vue-awesome-swiper
@@ -175,7 +180,6 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
-
 ```
 
 ### Step 2.3: Import CSS dependencies to `App.vue`
@@ -220,7 +224,6 @@ export default {
   @import "https://use.fontawesome.com/releases/v5.8.1/css/all.css";
 
 </style>
-
 ```
 
 ## Step 3: Set up Router Plugin
